@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         registryName = 'acraucppoctest'
+        dockerFilePath = './webapi/'
     }
 
     stages {
@@ -22,7 +23,7 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build registryName ./webapi/
+                    dockerImage = docker.build registryName dockerFilePath
                     //dockerImage = docker.build('./webapi/')
                }
             }
