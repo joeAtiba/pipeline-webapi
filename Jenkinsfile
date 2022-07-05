@@ -26,7 +26,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up docker residue...'
-            sh 'docker system prune -f            
+            sh 'docker system prune -f'
         }
     }
 }
