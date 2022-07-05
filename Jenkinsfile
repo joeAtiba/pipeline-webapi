@@ -16,10 +16,17 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
+                    // You can't use strings here, use environment up above!
                     dockerImage = docker.build(registryName, dockerFilePath)
-                    //dockerImage = docker.build('./webapi/')
                }
             }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Cleaning up docker residue...'
+            sh 'docker system prune -f            
         }
     }
 }
