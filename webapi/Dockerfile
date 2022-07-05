@@ -10,9 +10,9 @@ WORKDIR /src
 #COPY ["webapi.csproj", "webapi/"]
 
 ##########
-RUN echo "$(pwd)"
-RUN echo "$(ls -lasF ..)"
-RUN echo "$(ls -lasF .)"
+#RUN echo "$(pwd)"
+#RUN echo "$(ls -lasF ..)"
+#RUN echo "$(ls -lasF .)"
 ##########
 
 #RUN dotnet restore "webapi/webapi.csproj"
@@ -20,9 +20,9 @@ COPY . ./webapi
 WORKDIR "/src/webapi"
 
 ##########
-RUN echo "$(pwd)"
-RUN echo "$(ls -lasF ..)"
-RUN echo "$(ls -lasF .)"
+#RUN echo "$(pwd)"
+#RUN echo "$(ls -lasF ..)"
+#RUN echo "$(ls -lasF .)"
 ##########
 
 RUN dotnet build "webapi.csproj" -c Release -o /app/build
