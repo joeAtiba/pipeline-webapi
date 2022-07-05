@@ -13,14 +13,6 @@ pipeline {
             }
         }
         
-        // Only you can prevent cruftification of your docker server...
-        stage('Docker Cleansing') {
-            steps {
-                sh 'docker rm $(docker ps -a -q)'
-                sh 'docker rmi $(docker images -q)'
-            }
-        }
-        
         stage ('Build Docker Image') {
             steps {
                 script {
