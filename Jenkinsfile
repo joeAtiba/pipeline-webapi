@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         registryName = 'acraucppoctest'
+        registryUrl = 'acraucppoctest.azurecr.io'
+        registryCredential = 'AcrAucpTest'
         dockerFilePath = './webapi/'
     }
 
@@ -13,12 +15,22 @@ pipeline {
             }
         }
         
-        stage ('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
                     // You can't use strings here, use environment up above!
                     dockerImage = docker.build(registryName, dockerFilePath)
                }
+            }
+        }
+        
+        stage('Push image to ACR') {
+            steps {
+                script {
+                    docker.withRegistry('http://${registryUrl}', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
