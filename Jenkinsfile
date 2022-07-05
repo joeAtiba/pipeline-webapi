@@ -15,7 +15,7 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build registryName -f ./webapi/Dockerfile
+                    dockerImage = docker.build('registryName', '-f ./webapi/Dockerfile', './webapi/')
                 }
             }
         }
