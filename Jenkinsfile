@@ -27,7 +27,7 @@ pipeline {
         stage('Push image to ACR') {
             steps {
                 script {
-                    docker.withRegistry('http://${registryUrl}', registryCredential) {
+                    docker.withRegistry("http://${registryUrl}", registryCredential) {
                         dockerImage.push()
                     }
                 }
