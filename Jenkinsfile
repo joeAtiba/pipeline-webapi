@@ -19,13 +19,13 @@ pipeline {
             }
         }
         
-//        stage ('Build Docker Image') {
-//            steps {
-//                script {
-//                    //dockerImage = docker.build('registryName', '-f ./webapi/Dockerfile', './webapi/')
-//                    dockerImage = docker.build('./webapi/')
-//               }
-//            }
-//        }
+        stage ('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build registryName
+                    //dockerImage = docker.build('./webapi/')
+               }
+            }
+        }
     }
 }
