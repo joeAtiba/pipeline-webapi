@@ -12,13 +12,20 @@ pipeline {
             }
         }
         
-        stage ('Build Docker Image') {
+        stage('Debugging') {
             steps {
-                script {
-                    //dockerImage = docker.build('registryName', '-f ./webapi/Dockerfile', './webapi/')
-                    dockerImage = docker.build('./webapi/')
-                }
+                echo 'Here is JENKINS_HOME:'
+                echo "${JENKINS_HOME}"
             }
         }
+        
+//        stage ('Build Docker Image') {
+//            steps {
+//                script {
+//                    //dockerImage = docker.build('registryName', '-f ./webapi/Dockerfile', './webapi/')
+//                    dockerImage = docker.build('./webapi/')
+//               }
+//            }
+//        }
     }
 }
