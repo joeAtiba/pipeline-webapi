@@ -22,7 +22,7 @@ pipeline {
         stage ('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build registryName
+                    dockerImage = docker.build registryName ./webapi/
                     //dockerImage = docker.build('./webapi/')
                }
             }
