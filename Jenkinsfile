@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        registryName = 'AcrAucpPocTest'
+        registryName = 'acraucppoctest'
     }
 
     stages {
