@@ -13,10 +13,11 @@ pipeline {
             }
         }
         
-        stage('Debugging') {
+        // Only you can prevent cruftification of your docker server...
+        stage('Docker Cleansing') {
             steps {
-                echo 'Here is JENKINS_HOME:'
-                echo "${JENKINS_HOME}"
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker rmi $(docker images -q)'
             }
         }
         
